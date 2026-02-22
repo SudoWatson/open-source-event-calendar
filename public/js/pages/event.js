@@ -45,6 +45,7 @@ timely.define("domReady", [], function() {
         r.isBuild ? n(null) : c(n)
     }, c
 }), timely.define("scripts/event/gmaps_helper", ["jquery_timely"], function(e) {
+    // Is this the true source, generating gmaps_helper file?
     var t = function() {
             var e = {
                     zoom: 14,

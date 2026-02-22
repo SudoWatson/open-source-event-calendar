@@ -1,3 +1,7 @@
+// Believe this is generated via pages/event.js
+// That would explain why this file was a single line long.
+// FYI GitHub search does not search all files. Which is why I referenced this (seemingly) generated file instead of the (seemingly) sourced event.js
+// Use `grep -rnC 2 "search content"` for searching
 timely.define(["jquery_timely"], function(e) {
     var t = function() {
             var e = {

@@ -1,3 +1,5 @@
+// Figure out how to call this.
+// This might need to be put into event.js?
 timely.define(["jquery_timely"], function ($) {
 
     function init_leaflet() {
