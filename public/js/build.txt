@@ -68,6 +68,7 @@ pages/event.js
 ----------------
 domReady.js
 scripts/event/gmaps_helper.js
+scripts/event/osm_helper.js
 scripts/event.js
 pages/event.js
 

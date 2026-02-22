@@ -1010,6 +1010,7 @@ timely.define("domReady", [], function () {
     }),
     timely.define(
         "scripts/add_new_event/event_location/gmaps_helper",
+        "scripts/add_new_event/event_location/osm_helper",
         ["jquery_timely", "domReady", "ai1ec_config", "scripts/add_new_event/event_location/input_coordinates_utility_functions", "external_libs/jquery.autocomplete_geomod", "external_libs/geo_autocomplete"],
         function (e, t, n, r) {
             var i,
@@ -1117,7 +1118,7 @@ timely.define("domReady", [], function () {
                 g = function () {
                     return f;
                 };
-            return {init_gmaps: h, ai1ec_update_map_from_coordinates: d, get_marker: m, get_position: g};
+            return {init_osm: h, ai1ec_update_map_from_coordinates: d, get_marker: m, get_position: g};
         }
     ),
     timely.define(

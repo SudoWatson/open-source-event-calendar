@@ -144,7 +144,7 @@ class FrontendCssController extends OsecBaseClass
                         sprintf(
                             /* translators: Compile error */
                             __(
-                                'Your CSS is being compiled on every request, 
+                                'Your CSS is being compiled on every request,
                                     which causes your calendar to perform slowly. The following error occurred: %s',
                                 'open-source-event-calendar'
                             ),

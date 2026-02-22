@@ -92,9 +92,9 @@ class EventLocationView extends OsecBaseClass
      **/
     public function get_map_view(Event $event): string
     {
-        if ( ! $event->get('show_map')) {
-            return '';
-        }
+        // if ( ! $event->get('show_map')) {
+        //     return '';
+        // }
 
         $location = $this->get_latlng($event);
         if ( ! $location) {
