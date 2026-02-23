@@ -77,11 +77,54 @@ timely.define("domReady", [], function() {
         handle_show_map_when_clicking_on_placeholder: n,
         init_gmaps: t
     }
-}), timely.define("scripts/event", ["jquery_timely", "domReady", "ai1ec_config", "scripts/event/gmaps_helper"], function(e, t, n, r) {
+}), timely.define("scripts/event/osm_helper", ["jquery_timely"], function(e) {
+    function init_leaflet() {
+        console.log("Initializing leaflet");
+        var mapEl = document.getElementById("osec-osm-canvas");
+        if (!mapEl) return;
+
+        // var latlng = mapEl.dataset.latlng;
+        // if (!latlng) return;
+
+        // var parts = latlng.split(",");
+        // var lat = parseFloat(parts[0]);
+        // var lng = parseFloat(parts[1]);
+        let lat = 5.0;
+        let lng = 5.0;
+
+        // TODO: If you disable the "position: relative" of the osm canvase in dev tools
+        // Then the map shows! Getting somewhere.
+        var map = leaflet.map(mapEl).setView([lat, lng], 14);
+
+        leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "© OpenStreetMap contributors"
+        }).addTo(map);
+
+        leaflet.marker([lat, lng]).addTo(map);
+    }
+
+    function handle_show_map_when_clicking_on_placeholder() {
+        console.log("Initializing leaflet via placeholder");
+        var container = $(".ai1ec-gmap-container-hidden:first");
+        $(this).remove();
+        container.hide();
+        container.removeClass("ai1ec-gmap-container-hidden");
+        container.fadeIn();
+
+        init_leaflet();
+    }
+
+    return {
+        handle_show_map_when_clicking_on_placeholder,
+        init_leaflet: init_leaflet
+    };
+}), timely.define("scripts/event", ["jquery_timely", "domReady", "ai1ec_config", "scripts/event/osm_helper"], function(e, t, n, r) {
     var i = function() {
-            e("#osec-gmap-canvas").length > 0 && timely.require(["libs/gmaps"], function(e) {
-                e(r.init_gmaps)
-            })
+            e("#osec-osm-canvas").length > 0 && timely.require(["libs/osm"], function(e) {
+                console.log("Required success");
+                console.log(r);
+                e(r.init_leaflet)
+            });
         },
         s = function() {
             e(".ai1ec-gmap-placeholder:first").click(r.handle_show_map_when_clicking_on_placeholder)
